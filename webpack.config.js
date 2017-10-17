@@ -1,7 +1,11 @@
+'use strict';
+
 const path = require('path');
+
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -18,9 +22,10 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   devServer: {
+    port: 8000,
     contentBase: path.resolve(__dirname, 'src')
   },
   module: {
@@ -29,7 +34,7 @@ const config = {
       exclude: /node_modules|bower_components/,
       use: [{
         loader: 'babel-loader',
-        options: { presets: ['es2015'] }
+        options: { presets: ['env'] }
       }]
     }, {
       test: /\.css$/,
@@ -42,7 +47,6 @@ const config = {
       ]
     }, {
       test: /\.scss$/,
-      exclude: /node_modules|bower_components/,
       use: extractScss.extract({
         // in production only
         use: [{
@@ -60,9 +64,14 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin('dist'),
+    new CopyWebpackPlugin([
+      { from: '**/*.{html,png,svg,jpg,gif,ico}' }
+    ]),
     extractScss,
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: 'index.html',
+      chunks: ['app'],
+      chunksSortMode: 'manual'
     })
   ]
 };
