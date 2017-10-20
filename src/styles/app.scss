@@ -1,9 +1,18 @@
-@import 'app.css';
+@import './colours';
+@import './typography';
+@import './main-body';
+@import './headers';
 
-$primary-color: crimson;
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
 
-body {
-  p {
-    color: $primary-color;
-  }
+.ccjmne-sleek-background,
+[ccjmne-sleek-background],
+ccjmne-sleek-background {
+  background-image: url('../assets/ccjmne-sleek-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
