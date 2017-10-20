@@ -54,12 +54,18 @@ const config = {
             options: { minimize: true }
           },
           {
+            loader: 'postcss-loader'
+          },
+          {
             loader: 'sass-loader',
             options: { outputStyle: 'compressed' }
           }
         ],
         fallback: 'style-loader'
       })
+    }, {
+      test: /\.(png|svg|jpg|gif|ico)$/,
+      loader: 'url-loader'
     }]
   },
   plugins: [
