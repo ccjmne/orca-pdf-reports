@@ -4,24 +4,22 @@
     <head>
         <meta charset="utf-8">
         <title>Webpack Playground</title>
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <style>
+        pdf-report {
+            height: 100%;
+        }
+        </style>
     </head>
 
-    <body ng-app="pdf-reports" ccjmne-sleek-background>
-        <div class="header">
-            <div class="circle center"></div>
-            <div class="bookmark">
-                <div class="bookmark-background"></div>
-                <div class="bookmark-content">
-                    <h2>Infos pratiques</h2>
-                </div>
-            </div>
-        </div>
-        <div class="main-body padded">
-            <h1>Hello Plunker!</h1>
-            <get-pdf></get-pdf>
-        </div>
-        <div class="footer"></div>
+    <body ng-app="pdf-reports">
+        <pdf-report>
+            <pdf-body>
+                <h1>ooi :D</h1>
+            </pdf-body>
+            <pdf-footer>
+                <get-pdf></get-pdf>
+            </pdf-footer>
+        </pdf-report>
     </body>
 
 </html>

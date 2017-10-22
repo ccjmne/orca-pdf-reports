@@ -1,23 +1,25 @@
-@import './colours';
-@import './typography';
-@import './main-body';
-@import './headers';
-
-body,
-html {
-  height: 100%;
+body {
   margin: 0;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-}
+pdf-report {
+  @import './colours';
+  @import './typography';
+  @import './pdf-body';
+  @import './headers';
 
-.ccjmne-sleek-background,
-[ccjmne-sleek-background],
-ccjmne-sleek-background {
-  background-image: url('../assets/ccjmne-sleek-background.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  .pdf-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+  }
+
+  .ccjmne-sleek-background,
+  [ccjmne-sleek-background],
+  ccjmne-sleek-background {
+    background-image: url('../assets/ccjmne-sleek-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }

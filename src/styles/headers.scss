@@ -9,14 +9,14 @@ $header-text-colour: white;
   background-size: cover;
 }
 
-.footer,
-.header {
+.pdf-footer,
+.pdf-header {
   width: 100%;
   height: 200px;
   color: $header-text-colour;
 }
 
-.header {
+.pdf-header {
   @include background-cover('../assets/pdf-header.png', bottom center);
 
   display: flex;
@@ -42,10 +42,13 @@ $header-text-colour: white;
     position: absolute;
     top: 40px;
     left: 0;
-    transform: scale(1); // creates stacking context;
+    transform: scale(1); // creates stacking context
   }
 }
 
-.footer {
+.pdf-footer {
   @include background-cover('../assets/pdf-footer.png', top center);
+
+  display: flex;
+  align-items: center;
 }

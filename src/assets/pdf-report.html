@@ -1,0 +1,14 @@
+<style>${require('../styles/app.scss')}</style>
+<div class="pdf-content" ccjmne-sleek-background>
+    <div class="pdf-header">
+        <div class="circle center"></div>
+        <div class="bookmark">
+            <div class="bookmark-background"></div>
+            <div class="bookmark-content">
+                <h2>Infos pratiques</h2>
+            </div>
+        </div>
+    </div>
+    <ng-transclude class="pdf-body" ng-transclude-slot="body"></ng-transclude>
+    <ng-transclude class="pdf-footer" ng-transclude-slot="footer"></ng-transclude>
+</div>

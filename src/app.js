@@ -1,11 +1,9 @@
 'use strict';
 
-import './styles/app.scss';
-
 const angular = require('angular');
 const _ = require('lodash');
 
-angular.module('pdf-reports', [require('angular-file-saver')])
+module.exports = angular.module('pdf-reports', [require('angular-file-saver')])
   .directive('getPdf', ['$http', '$q', 'FileSaver', function ($http, $q, FileSaver) {
     const apiSvc = {
       post: function (url, data, config) {
@@ -20,15 +18,22 @@ angular.module('pdf-reports', [require('angular-file-saver')])
         scope.getPDF = function () {
           (function (selector) {
             const doc = (selector ? document.querySelector(selector) : document.documentElement).cloneNode(true);
-            _.forEach(doc.querySelectorAll('script'), script => script.parentNode.removeChild(script));
-            if (selector) {
-              _.forEach(document.querySelectorAll('style, link[rel="stylesheet"]'), css => doc.appendChild(css.cloneNode(true)));
-            }
-
             apiSvc.post('//localhost:8080/api/reports', { content: doc.outerHTML, orientation: 'Portrait', size: 'A4' }, { responseType: 'arraybuffer' })
               .then((data) => FileSaver.saveAs(new Blob([data.data], { type: 'application/pdf;charset=utf-8' }), 'lolz.pdf', true));
-          }());
+          }('pdf-report'));
         };
       }
     };
-  }]);
+  }])
+  .directive('pdfReport', [function () {
+    return {
+      template: require('!html-loader?interpolate!./assets/pdf-report.html'),
+      transclude: {
+        body: 'pdfBody',
+        header: '?pdfHeader',
+        footer: '?pdfFooter'
+      },
+      restrict: 'E'
+    };
+  }])
+  .name;
