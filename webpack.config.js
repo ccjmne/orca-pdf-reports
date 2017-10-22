@@ -15,12 +15,13 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    filename: 'pdf-reports.min.js'
   },
   devServer: {
     port: 8000,
     contentBase: path.resolve(__dirname, 'src')
   },
+  externals: ['angular', 'lodash'],
   module: {
     rules: [{
       test: /\.js$/,
