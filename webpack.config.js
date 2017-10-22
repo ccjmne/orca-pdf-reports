@@ -3,17 +3,10 @@
 const path = require('path');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
-
-const extractScss = new ExtractTextWebpackPlugin({
-  filename: '[name].[contenthash].css',
-  disable: !isProduction
-});
 
 const config = {
   context: path.resolve(__dirname, 'src'),
@@ -37,56 +30,40 @@ const config = {
         options: { presets: ['env'] }
       }]
     }, {
-      test: /\.css$/,
-      use: [
-        { loader: 'style-loader' },
-        {
+      test: /\.scss$/,
+      use: [{
+          loader: 'style-loader'
+        }, {
           loader: 'css-loader',
-          options: { minimize: isProduction }
+          options: { minimize: true }
+        },
+        {
+          loader: 'postcss-loader'
+        },
+        {
+          loader: 'sass-loader',
+          options: { outputStyle: 'compressed' }
         }
       ]
-    }, {
-      test: /\.scss$/,
-      use: extractScss.extract({
-        // in production only
-        use: [{
-            loader: 'css-loader',
-            options: { minimize: true }
-          },
-          {
-            loader: 'postcss-loader'
-          },
-          {
-            loader: 'sass-loader',
-            options: { outputStyle: 'compressed' }
-          }
-        ],
-        fallback: 'style-loader'
-      })
     }, {
       test: /\.(png|svg|jpg|gif|ico)$/,
       loader: 'url-loader'
     }]
   },
   plugins: [
-    new CleanWebpackPlugin('dist'),
-    new CopyWebpackPlugin([
-      { from: '**/*.{html,png,svg,jpg,gif,ico}' }
-    ]),
-    extractScss,
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-      chunks: ['app'],
-      chunksSortMode: 'manual'
-    })
+    new CleanWebpackPlugin('dist')
   ]
 };
 
 if (isProduction) {
-  // insert js minification right after sass compiling
-  config.plugins.splice(config.plugins.indexOf(extractScss) + 1, 0, new UglifyjsWebpackPlugin());
+  config.plugins.push(new UglifyjsWebpackPlugin());
 } else {
   config.devtool = 'cheap-module-eval-source-map';
+  config.plugins.push(new HtmlWebpackPlugin({
+    template: 'index.html',
+    chunks: ['app'],
+    chunksSortMode: 'manual'
+  }));
 }
 
 module.exports = config;
