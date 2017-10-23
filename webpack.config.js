@@ -21,7 +21,6 @@ const config = {
     port: 8000,
     contentBase: path.resolve(__dirname, 'src')
   },
-  externals: ['angular', 'lodash'],
   module: {
     rules: [{
       test: /\.js$/,
@@ -59,6 +58,7 @@ const config = {
 
 if (isProduction) {
   config.plugins.push(new UglifyjsWebpackPlugin());
+  config.externals = ['angular', 'lodash'];
 } else {
   config.devtool = 'cheap-module-eval-source-map';
   config.plugins.push(new HtmlWebpackPlugin({
