@@ -45,8 +45,11 @@ const config = {
         }
       ]
     }, {
-      test: /\.(png|svg|jpg|gif|ico)$/,
-      loader: 'url-loader'
+      test: /\.(png|svg|jpe?g|gif|ico)$/,
+      use: [
+        { loader: 'url-loader' },
+        { loader: 'image-webpack-loader' }
+      ]
     }]
   },
   plugins: [
