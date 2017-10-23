@@ -15,7 +15,8 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'pdf-reports.min.js'
+    filename: 'pdf-reports.min.js',
+    libraryTarget: 'umd'
   },
   devServer: {
     port: 8000,
