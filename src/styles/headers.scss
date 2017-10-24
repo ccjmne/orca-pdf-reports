@@ -23,7 +23,7 @@ $header-text-colour: white;
 }
 
 .pdf-header {
-  @include background-cover('../assets/pdf-header.png', bottom center);
+  @include background-cover('../assets/pdf-header.svg', bottom center);
   @include center-content;
   position: relative;
 
@@ -57,7 +57,7 @@ $header-text-colour: white;
 }
 
 .pdf-footer {
-  @include background-cover('../assets/pdf-footer.png', top center);
+  @include background-cover('../assets/pdf-footer.svg', top center);
 
   display: flex;
   align-items: center;
