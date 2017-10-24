@@ -61,4 +61,27 @@ $header-text-colour: white;
 
   display: flex;
   align-items: center;
+
+  .orca-watermark {
+    @include center-content;
+
+    position: absolute;
+    right: 50%;
+    bottom: 1em;
+    transform: translateX(50%);
+
+    .author {
+      display: block;
+
+      &::after {
+        content: '|';
+        padding: .5em;
+        color: $colour-secondary;
+      }
+    }
+
+    img.orca-logo {
+      max-height: 2em;
+    }
+  }
 }
