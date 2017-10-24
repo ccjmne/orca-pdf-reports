@@ -23,7 +23,7 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver')])
                   <html>
                       <head>
                           <meta charset="utf-8">
-                          <style>body, html, pdf-report { height: 100%; margin: 0; }</style>
+                          <style>body, html { height: 100%; margin: 0; }</style>
                       </head>
                       <body>${doc.outerHTML}</body>
                   </html>`,
