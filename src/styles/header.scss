@@ -1,0 +1,35 @@
+@import './bookmark';
+
+.pdf-header {
+  @include background-cover('../assets/pdf-header.svg', bottom center);
+  @include center-content;
+  position: relative;
+
+  .pdf-logo {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    pdf-logo {
+      @include center-content;
+      height: 100px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: $header-text-colour;
+      box-shadow: $shadow;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+
+  .bookmark {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    transform: scale(1); // creates stacking context
+  }
+}

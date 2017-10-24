@@ -1,16 +1,24 @@
 pdf-report {
   @import './colours';
+  @import './mixins';
   @import './typography';
   @import './pdf-body';
-  @import './headers';
+  @import './header';
+  @import './footer';
 
   .pdf-root {
+    @include background-cover('../assets/pdf-background.svg');
+
     display: flex;
     flex-direction: column;
     height: 100%;
     margin: 0;
-    background-image: url('../assets/pdf-background.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
+  }
+
+  .pdf-footer,
+  .pdf-header {
+    width: 100%;
+    height: 200px;
+    color: $header-text-colour;
   }
 }

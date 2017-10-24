@@ -1,0 +1,12 @@
+@mixin background-cover($url, $position: center center) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: $position;
+  background-size: cover;
+}
+
+@mixin center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
