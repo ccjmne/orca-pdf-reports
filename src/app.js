@@ -30,6 +30,7 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver')])
       template: require('!html-loader?interpolate!./assets/pdf-report.html'),
       transclude: {
         body: 'pdfBody',
+        logo: '?pdfLogo',
         header: '?pdfHeader',
         footer: '?pdfFooter'
       },

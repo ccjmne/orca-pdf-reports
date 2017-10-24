@@ -9,6 +9,12 @@ $header-text-colour: white;
   background-size: cover;
 }
 
+@mixin center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .pdf-footer,
 .pdf-header {
   width: 100%;
@@ -18,24 +24,28 @@ $header-text-colour: white;
 
 .pdf-header {
   @include background-cover('../assets/pdf-header.png', bottom center);
-
-  display: flex;
+  @include center-content;
   position: relative;
-  align-items: center;
-  justify-content: center;
 
-  .circle {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: $header-text-colour;
-  }
-
-  .center {
+  .pdf-logo {
     position: absolute;
-    top: 12px;
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
+
+    pdf-logo {
+      @include center-content;
+      height: 100px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: $header-text-colour;
+      box-shadow: $shadow;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
   }
 
   .bookmark {

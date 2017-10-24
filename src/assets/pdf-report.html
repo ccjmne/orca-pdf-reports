@@ -1,7 +1,7 @@
 <style>${require('../styles/app.scss')}</style>
 <div class="pdf-root">
     <div class="pdf-header">
-        <div class="circle center"></div>
+        <ng-transclude class="pdf-logo" ng-transclude-slot="logo"></ng-transclude>
         <div class="bookmark">
             <div class="bookmark-background"></div>
             <div class="bookmark-content">
