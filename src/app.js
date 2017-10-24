@@ -18,7 +18,18 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver')])
         scope.getPDF = function () {
           (function (selector) {
             const doc = (selector ? document.querySelector(selector) : document.documentElement).cloneNode(true);
-            apiSvc.post('//localhost:8080/api/reports', { content: doc.outerHTML, orientation: 'Portrait', size: 'A4' }, { responseType: 'arraybuffer' })
+            apiSvc.post('//localhost:8080/api/reports', {
+                content: `<!DOCTYPE html>
+                  <html>
+                      <head>
+                          <meta charset="utf-8">
+                          <style>body, html, pdf-report { height: 100%; }</style>
+                      </head>
+                      <body>${doc.outerHTML}</body>
+                  </html>`,
+                orientation: 'Landscape',
+                size: 'A3'
+              }, { responseType: 'arraybuffer' })
               .then((data) => FileSaver.saveAs(new Blob([data.data], { type: 'application/pdf;charset=utf-8' }), 'lolz.pdf', true));
           }('pdf-report'));
         };
