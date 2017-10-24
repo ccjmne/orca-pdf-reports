@@ -4,6 +4,7 @@ const angular = require('angular');
 const _ = require('lodash');
 
 module.exports = angular.module('pdf-reports', [require('angular-file-saver')])
+  .directive('card', require('./directives/card/card.js'))
   .directive('getPdf', ['$http', '$q', 'FileSaver', function ($http, $q, FileSaver) {
     const apiSvc = {
       post: function (url, data, config) {

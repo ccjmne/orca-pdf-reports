@@ -6,6 +6,8 @@ pdf-report {
   @import './header';
   @import './footer';
 
+  @import '../directives/card/card';
+
   .pdf-root {
     @include background-cover('../assets/pdf-background.svg');
 
