@@ -36,16 +36,18 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver')])
       }
     };
   }])
-  .directive('pdfReport', [function () {
-    return {
-      template: require('!html-loader?interpolate!./assets/pdf-report.html'),
-      transclude: {
-        body: 'pdfBody',
-        logo: '?pdfLogo',
-        header: '?pdfHeader',
-        footer: '?pdfFooter'
-      },
-      restrict: 'E'
-    };
-  }])
+  .component('pdfReport', {
+    template: require('!html-loader?interpolate!./assets/pdf-report.html'),
+    transclude: {
+      body: 'pdfBody',
+      title: '?pdfTitle',
+      logo: '?pdfLogo',
+      bookmark: '?pdfBookmark',
+      footer: '?pdfFooter'
+    },
+    controller: function ($transclude) {
+      this.$inject = '$transclude';
+      this.hasBookmark = $transclude.isSlotFilled('bookmark');
+    }
+  })
   .name;
