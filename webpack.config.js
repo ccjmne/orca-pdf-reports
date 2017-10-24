@@ -31,6 +31,12 @@ const config = {
         options: { presets: ['env'] }
       }]
     }, {
+      test: /\.html$/,
+      use: [{
+        loader: 'html-loader',
+        options: { minimize: true }
+      }]
+    }, {
       test: /\.scss$/,
       use: [{
           loader: 'css-loader',
