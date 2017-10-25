@@ -1,39 +1,26 @@
 $card-background: white;
-$card-radius: 3px;
+$card-radius: 5px;
 
 .card {
   min-width: 500px;
   overflow: hidden;
+  border: 1px solid $shadow-colour;
   border-radius: $card-radius;
+  background: $card-background;
   box-shadow: $shadow;
 
-  .card-content {
-    border: 1px solid $shadow-colour;
-    border-bottom: 0;
-    border-radius: $card-radius $card-radius 0 0;
-    background: $card-background;
+  .card-title {
+    @include background-cover('../assets/pdf-header.svg', bottom center);
+    @include center-content;
+    padding-bottom: 10px;
+    color: $header-text-colour;
 
-    .card-title {
-      @include background-cover('../assets/pdf-background.svg', top left);
-
-      display: flex;
-      justify-content: center;
-      padding: 0 20px;
-      border-bottom: 1px solid $shadow-colour;
-
-      > h1,
-      > h2 {
-        display: inline-block;
-      }
-    }
-
-    .card-body {
-      padding: 20px;
+    > h2 {
+      display: inline-block;
     }
   }
 
-  .card-footer {
-    @include background-cover('../assets/pdf-footer.svg');
-    height: 30px;
+  .card-body {
+    padding: 20px;
   }
 }
