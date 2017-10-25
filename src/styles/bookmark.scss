@@ -1,6 +1,3 @@
-$shadow-colour: rgba(0, 0, 0, .23);
-$shadow: 0 3px 3px $shadow-colour;
-
 @mixin bookmark-tail($placement: bottom, $width: 50px) {
   $transparent-border: top;
   @if $placement == top {
