@@ -1,4 +1,7 @@
 <div class="card">
-    <div class="card-title"><h2 ng-transclude="title"></h2></div>
-    <div class="card-body" ng-transclude="body"></div>
+    <div class="card-title" ng-if="$ctrl.hasTitle">
+        <h2 ng-transclude="title"></h2>
+    </div>
+    <ng-transclude class="card-body" ng-transclude-slot="body" ng-if="$ctrl.hasBody"></ng-transclude>
+    <table ng-transclude="table"></table>
 </div>

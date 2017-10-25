@@ -5,6 +5,7 @@ pdf-report {
   @import './pdf-body';
   @import './header';
   @import './footer';
+  @import './table';
 
   @import '../directives/card/card';
 

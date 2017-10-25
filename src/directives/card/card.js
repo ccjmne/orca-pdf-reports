@@ -1,12 +1,16 @@
 'use strict';
 
-module.exports = function () {
-  return {
-    restrict: 'E',
-    template: require('./card.html'),
-    transclude: {
-      title: '?cardTitle',
-      body: 'cardBody'
-    }
-  };
+module.exports = {
+  restrict: 'E',
+  template: require('./card.html'),
+  transclude: {
+    title: '?cardTitle',
+    body: '?cardBody',
+    table: '?table'
+  },
+  controller: function ($transclude) {
+    this.$inect = '$transclude';
+    this.hasTitle = $transclude.isSlotFilled('title');
+    this.hasBody = $transclude.isSlotFilled('body');
+  }
 };

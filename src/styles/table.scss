@@ -1,0 +1,19 @@
+$odd-row-background: #eee;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  tbody td,
+  thead th {
+    padding: .5em 20px;
+  }
+
+  thead th {
+    font-weight: 800;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: $odd-row-background;
+  }
+}
