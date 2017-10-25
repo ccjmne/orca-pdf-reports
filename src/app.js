@@ -13,7 +13,11 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver')])
     };
 
     return {
-      template: '<button ng-click="getPDF()">Get PDF</button>',
+      template: `<form ng-submit="getPDF()">
+          <select ng-model="size" ng-options="size for size in ['A4', 'A3']" ng-init="size = 'A4'"></select>
+          <select ng-model="orientation" ng-options="orientation for orientation in ['Portrait', 'Landscape']" ng-init="orientation = 'Portrait'"></select>
+          <button type="submit">Get PDF</button>
+      </form>`,
       scope: true,
       link: function (scope, elem, attrs) { // jshint ignore: line
         scope.getPDF = function () {
@@ -28,8 +32,8 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver')])
                       </head>
                       <body>${doc.outerHTML}</body>
                   </html>`,
-                orientation: 'Landscape',
-                size: 'A3'
+                orientation: scope.orientation,
+                size: scope.size
               }, { responseType: 'arraybuffer' })
               .then((data) => FileSaver.saveAs(new Blob([data.data], { type: 'application/pdf;charset=utf-8' }), 'lolz.pdf', true));
           }('pdf-report'));
