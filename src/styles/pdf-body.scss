@@ -4,4 +4,15 @@
   flex-grow: 1;
   align-items: center;
   justify-content: center;
+  transform: scale(1); // new stacking context
+
+  .background-text {
+    position: absolute;
+    z-index: -1;
+    top: 10%;
+    left: -10%;
+    transform: rotate(-5deg);
+    color: $background-text-colour;
+    font-size: 20em;
+  }
 }

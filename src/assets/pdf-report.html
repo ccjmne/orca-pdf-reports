@@ -10,7 +10,10 @@
             </div>
         </div>
     </div>
-    <ng-transclude class="pdf-body" ng-transclude-slot="body"></ng-transclude>
+    <div class="pdf-body">
+        <div class="background-text">Sécurité</div>
+        <ng-transclude ng-transclude-slot="body"></ng-transclude>
+    </div>
     <div class="pdf-footer">
         <ng-transclude ng-transclude-slot="footer"></ng-transclude>
         <div class="orca-watermark">
