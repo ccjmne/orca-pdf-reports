@@ -1,5 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 .pdf-root {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+  h1,
+  h2 {
+    font-weight: 400;
+  }
+}
+
+@each $position in left, right, center {
+  .text-#{$position} {
+    text-align: $position;
+  }
+}
+
+$text-colours: primary $colour-primary, secondary $colour-secondary;
+@each $name, $colour in $text-colours {
+  .text-#{$name} {
+    color: $colour;
+  }
 }
