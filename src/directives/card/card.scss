@@ -1,10 +1,18 @@
 $card-background: white;
 $card-radius: 5px;
 
+card {
+  display: block;
+
+  + card {
+    margin-top: 20px;
+  }
+}
+
 .card {
   min-width: 500px;
   overflow: hidden;
-  border: 1px solid $shadow-colour;
+  border: 1px solid $colour-primary;
   border-radius: $card-radius;
   background: $card-background;
   box-shadow: $shadow;
@@ -12,6 +20,7 @@ $card-radius: 5px;
   .card-title {
     @include background-cover('../assets/pdf-header.svg', bottom center);
     @include center-content;
+
     padding-bottom: 10px;
     color: $header-text-colour;
 
