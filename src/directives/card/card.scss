@@ -32,5 +32,28 @@ card {
   .card-body {
     display: block;
     padding: 20px;
+
+    + .card-tables {
+      border-top: 1px solid $shadow-colour;
+    }
+  }
+
+  .card-tables {
+    display: block;
+    width: 100%;
+
+    @for $i from 1 through 4 {
+      table:first-child:nth-last-child(#{$i}) {
+        &,
+        & ~ table {
+          width: 100% / $i;
+          float: left;
+        }
+
+        ~ table {
+          border-left: 1px solid $shadow-colour;
+        }
+      }
+    }
   }
 }
