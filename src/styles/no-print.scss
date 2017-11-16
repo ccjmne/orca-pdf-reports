@@ -1,6 +1,5 @@
 pdf-report {
-  [contenteditable=true]::after {
-    content: '✏️';
-    margin-left: 5px;
+  [contenteditable]::after {
+    content: ' ✏️';
   }
 }
