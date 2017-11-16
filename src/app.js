@@ -1,5 +1,7 @@
 'use strict';
 
+require('style-loader!./styles/no-print.scss');
+
 const angular = require('angular');
 const _ = require('lodash');
 
