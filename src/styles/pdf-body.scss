@@ -8,6 +8,17 @@
 
   transform: scale(1); // new stacking context
 
+  pdf-body {
+    display: flex;
+    flex-flow: row nowrap; // wrap unsupported in wkhtmltopdf@~0.13
+    align-items: center;
+    justify-content: center;
+
+    + pdf-body {
+      margin-top: 20px;
+    }
+  }
+
   .background-text {
     position: absolute;
     z-index: -1;

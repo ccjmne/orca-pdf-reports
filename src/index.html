@@ -40,23 +40,25 @@
                         </tbody>
                     </table>
                 </card>
-                <card>
-                    <card-title>Agents d'Évacuation</card-title>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Expiry date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="empl in [{name: 'eric', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francois', until: '1994-11-29'}]">
-                                <td>{{empl.name}}</td>
-                                <td class="text-right text-primary">{{empl.until}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </card>
+            </pdf-body>
+            <pdf-body>
+              <card>
+                  <card-title>Agents d'Évacuation</card-title>
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Expiry date</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr ng-repeat="empl in [{name: 'eric', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francois', until: '1994-11-29'}]">
+                              <td>{{empl.name}}</td>
+                              <td class="text-right text-primary">{{empl.until}}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </card>
             </pdf-body>
             <pdf-footer>
                 <get-pdf></get-pdf>
