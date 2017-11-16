@@ -21,10 +21,12 @@
 }
 
 .bookmark {
-  $height: 70px;
+  $height: 3.5em;
 
-  display: inline-block;
+  display: flex;
   position: relative;
+  flex-direction: column;
+  justify-content: center;
   height: $height;
   padding: 0 40px;
 
@@ -34,6 +36,7 @@
     > h1,
     > h2 {
       display: inline-block;
+      margin: 0;
     }
   }
 

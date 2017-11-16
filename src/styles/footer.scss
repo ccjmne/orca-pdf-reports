@@ -3,6 +3,8 @@
 
   display: flex;
   align-items: center;
+  height: 5em;
+  padding-top: 3em;
 
   .orca-watermark {
     @include center-content;

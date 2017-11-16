@@ -18,14 +18,14 @@ card {
   box-shadow: $shadow;
 
   .card-title {
-    @include background-cover('../assets/pdf-header.svg', bottom center);
+    @include background-cover('../assets/pdf-footer.svg', bottom center);
     @include center-content;
 
-    padding-bottom: 10px;
     color: $header-text-colour;
 
     > h2 {
       display: inline-block;
+      margin: 10px;
     }
   }
 

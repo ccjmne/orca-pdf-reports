@@ -2,8 +2,15 @@
 
 .pdf-header {
   @include background-cover('../assets/pdf-header.svg', bottom center);
-  @include center-content;
-  position: relative;
+
+  display: flex;
+  justify-content: center;
+  height: 4em;
+  padding: 2em 0;
+
+  .title {
+    margin: 0;
+  }
 
   .pdf-logo {
     position: absolute;
@@ -28,7 +35,7 @@
 
   .bookmark {
     position: absolute;
-    top: 40px;
+    top: 4em;
     left: 0;
     transform: scale(1); // creates stacking context
   }
