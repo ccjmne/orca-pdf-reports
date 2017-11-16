@@ -42,16 +42,16 @@ card {
     display: block;
     width: 100%;
 
+    table + table {
+      border-left: 1px solid $shadow-colour;
+    }
+
     @for $i from 1 through 4 {
       table:first-child:nth-last-child(#{$i}) {
         &,
         & ~ table {
           width: 100% / $i;
           float: left;
-        }
-
-        ~ table {
-          border-left: 1px solid $shadow-colour;
         }
       }
     }
