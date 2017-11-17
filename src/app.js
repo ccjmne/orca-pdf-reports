@@ -51,9 +51,8 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver'), r
       bookmark: '?pdfBookmark',
       footer: '?pdfFooter'
     },
-    controller: function ($transclude) {
-      this.$inject = '$transclude';
+    controller: ['$transclude', function ($transclude) {
       this.hasBookmark = $transclude.isSlotFilled('bookmark');
-    }
+    }]
   })
   .name;

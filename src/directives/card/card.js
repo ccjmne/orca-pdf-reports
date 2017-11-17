@@ -8,9 +8,8 @@ module.exports = {
     body: '?cardBody',
     table: '?table'
   },
-  controller: function ($transclude) {
-    this.$inect = '$transclude';
+  controller: ['$transclude', function ($transclude) {
     this.hasTitle = $transclude.isSlotFilled('title');
     this.hasBody = $transclude.isSlotFilled('body');
-  }
+  }]
 };
