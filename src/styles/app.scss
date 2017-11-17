@@ -9,6 +9,11 @@ pdf-report {
 
   @import '../directives/card/card';
 
+  .no-print,
+  [no-print] {
+    display: none;
+  }
+
   .pdf-root {
     @include background-cover('../assets/pdf-background.svg');
 

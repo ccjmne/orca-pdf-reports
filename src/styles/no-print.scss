@@ -1,4 +1,9 @@
 pdf-report {
+  .no-print,
+  [no-print] {
+    display: inline-block !important; // scss-lint:disable ImportantRule
+  }
+
   [contenteditable]::after {
     content: ' ✏️';
   }
