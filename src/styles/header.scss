@@ -4,6 +4,7 @@
   @include background-cover('../assets/pdf-header.svg', bottom center);
 
   display: flex;
+  position: relative;
   justify-content: center;
   height: 4em;
   padding: 2em 0;
@@ -35,7 +36,7 @@
 
   .bookmark {
     position: absolute;
-    top: 4em;
+    bottom: 0;
     left: 0;
     transform: scale(1); // creates stacking context
   }
