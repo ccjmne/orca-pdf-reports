@@ -1,7 +1,5 @@
 'use strict';
 
-require('style-loader!./styles/no-print.scss');
-
 const angular = require('angular');
 const _ = require('lodash');
 
@@ -52,4 +50,25 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver'), r
       this.hasBookmark = $transclude.isSlotFilled('bookmark');
     }]
   })
+  .directive('pdfTemplate', ['$templateRequest', '$compile', function ($templateRequest, $compile) {
+    return {
+      restrict: 'A',
+      scope: { pdfContents: '=', pdfTemplate: '@' },
+      link: function ($scope, $element, $attrs) { // jshint ignore: line
+        const shadowRoot = $element[0].attachShadow({ mode: 'open' });
+        const noPrint = document.createElement('style');
+        noPrint.innerHTML = require('./styles/no-print.scss');
+        $templateRequest($scope.pdfTemplate).then(tmpl => {
+          shadowRoot.innerHTML = tmpl;
+          shadowRoot.appendChild(noPrint);
+          $compile(shadowRoot)($scope);
+
+          $scope.$watch(() => shadowRoot.innerHTML, function () {
+            // notifies
+            $scope.pdfContents = shadowRoot.querySelector('pdf-report').outerHTML;
+          });
+        });
+      }
+    };
+  }])
   .name;
