@@ -1,7 +1,7 @@
 @import './bookmark';
 
 .pdf-header {
-  @include background-cover('../assets/pdf-header.svg', bottom center);
+  @include background-cover('../../../assets/pdf-header.svg', bottom center);
 
   display: flex;
   position: relative;

@@ -37,19 +37,6 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver'), r
       }
     };
   }])
-  .component('pdfReport', {
-    template: require('!html-loader?interpolate!./assets/pdf-report.html'),
-    transclude: {
-      body: 'pdfBody',
-      title: '?pdfTitle',
-      logo: '?pdfLogo',
-      bookmark: '?pdfBookmark',
-      footer: '?pdfFooter'
-    },
-    controller: ['$transclude', function ($transclude) {
-      this.hasBookmark = $transclude.isSlotFilled('bookmark');
-    }]
-  })
   .directive('pdfTemplate', ['$templateRequest', '$compile', function ($templateRequest, $compile) {
     return {
       restrict: 'A',

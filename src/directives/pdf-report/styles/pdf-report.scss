@@ -7,7 +7,7 @@ pdf-report {
   @import './footer';
   @import './table';
 
-  @import '../directives/card/card';
+  @import '../../card/card';
 
   .no-print,
   [no-print] {
@@ -15,7 +15,7 @@ pdf-report {
   }
 
   .pdf-root {
-    @include background-cover('../assets/pdf-background.svg');
+    @include background-cover('../../../assets/pdf-background.svg');
 
     display: flex;
     flex-direction: column;

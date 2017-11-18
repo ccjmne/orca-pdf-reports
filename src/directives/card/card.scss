@@ -18,7 +18,7 @@ card {
   box-shadow: $shadow;
 
   .card-title {
-    @include background-cover('../assets/pdf-footer.svg', bottom center);
+    @include background-cover('../../../assets/pdf-footer.svg', bottom center);
     @include center-content;
 
     color: $header-text-colour;

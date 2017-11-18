@@ -1,4 +1,4 @@
-<style>${require('../styles/app.scss')}</style>
+<style>${require('./styles/pdf-report.scss')}</style>
 <div class="pdf-root">
     <div class="pdf-header">
         <ng-transclude class="pdf-logo" ng-transclude-slot="logo"></ng-transclude>
@@ -18,7 +18,7 @@
         <ng-transclude ng-transclude-slot="footer"></ng-transclude>
         <div class="orca-watermark">
             <span class="author">généré par Orca</span>
-            <img class="orca-logo" src="orca-white.svg" />
+            <img class="orca-logo" src="../../assets/orca-white.svg" />
         </div>
     </div>
 </div>

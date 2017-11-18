@@ -1,5 +1,5 @@
 .pdf-footer {
-  @include background-cover('../assets/pdf-footer.svg', top center);
+  @include background-cover('../../../assets/pdf-footer.svg', top center);
 
   display: flex;
   position: relative;
