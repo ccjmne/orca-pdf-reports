@@ -19,25 +19,22 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver'), r
           <select ng-model="orientation" ng-options="orientation for orientation in ['Portrait', 'Landscape']" ng-init="orientation = 'Portrait'"></select>
           <button type="submit">Get PDF</button>
       </form>`,
-      scope: true,
+      scope: { pdfContents: '=' },
       link: function (scope, elem, attrs) { // jshint ignore: line
         scope.getPDF = function () {
-          (function (selector) {
-            const doc = (selector ? document.querySelector(selector) : document.documentElement).cloneNode(true);
-            apiSvc.post('//localhost:8080/api/reports', {
-                content: `<!DOCTYPE html>
+          apiSvc.post('//localhost:8080/api/reports', {
+              content: `<!DOCTYPE html>
                   <html>
                       <head>
                           <meta charset="utf-8">
                           <style>body, html { height: 100%; margin: 0; font-size: 1.1em; }</style>
                       </head>
-                      <body>${doc.outerHTML}</body>
+                      <body>${scope.pdfContents}</body>
                   </html>`,
-                orientation: scope.orientation,
-                size: scope.size
-              }, { responseType: 'arraybuffer' })
-              .then((data) => FileSaver.saveAs(new Blob([data.data], { type: 'application/pdf;charset=utf-8' }), 'lolz.pdf', true));
-          }('pdf-report'));
+              orientation: scope.orientation,
+              size: scope.size
+            }, { responseType: 'arraybuffer' })
+            .then((data) => FileSaver.saveAs(new Blob([data.data], { type: 'application/pdf;charset=utf-8' }), 'lolz.pdf', true));
         };
       }
     };
