@@ -11,7 +11,7 @@ pdf-report {
 
   .no-print,
   [no-print] {
-    display: none;
+    display: none !important; // scss-lint:disable ImportantRule
   }
 
   .pdf-root {
