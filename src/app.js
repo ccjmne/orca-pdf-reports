@@ -1,5 +1,7 @@
 'use strict';
 
+require('@webcomponents/shadydom');
+
 const angular = require('angular');
 const _ = require('lodash');
 
