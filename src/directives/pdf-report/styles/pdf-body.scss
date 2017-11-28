@@ -28,5 +28,6 @@
     transform: translate(-50%, -50%) rotate(-5deg);
     color: $background-text-colour;
     font-size: 20em;
+    pointer-events: none;
   }
 }
