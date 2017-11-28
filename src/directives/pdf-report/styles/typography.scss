@@ -7,17 +7,25 @@
   h2 {
     font-weight: 400;
   }
-}
 
-@each $position in left, right, center {
-  .text-#{$position} {
-    text-align: $position;
+  h1 {
+    font-size: 32px;
   }
-}
 
-$text-colours: primary $colour-primary, secondary $colour-secondary;
-@each $name, $colour in $text-colours {
-  .text-#{$name} {
-    color: $colour;
+  h2 {
+    font-size: 24px;
+  }
+
+  @each $position in left, right, center {
+    .text-#{$position} {
+      text-align: $position;
+    }
+  }
+
+  $text-colours: primary $colour-primary, secondary $colour-secondary;
+  @each $name, $colour in $text-colours {
+    .text-#{$name} {
+      color: $colour;
+    }
   }
 }
