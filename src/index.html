@@ -65,6 +65,11 @@
                         </tbody>
                     </table>
                 </pdf-card>
+                <pdf-card ng-repeat="card in cards">
+                    <card-title>Card #{{card}}</card-title>
+                    <card-body>Some random content...</card-body>
+                </pdf-card>
+                <pdf-card add="cards.push(cards.length + 1)" ng-init="cards = []" no-print></pdf-card>
             </pdf-body>
             <pdf-footer>
                 <get-pdf pdf-contents="contents" no-print></get-pdf>
