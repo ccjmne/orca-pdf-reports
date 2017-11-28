@@ -1,7 +1,8 @@
-<div class="card">
+<div class="card" ng-if="!$ctrl.add">
     <div class="card-title" ng-if="$ctrl.hasTitle">
         <h2 ng-transclude="title"></h2>
     </div>
     <ng-transclude class="card-body" ng-transclude-slot="body" ng-if="$ctrl.hasBody" contenteditable></ng-transclude>
     <ng-transclude class="card-tables" ng-transclude-slot="table"></ng-transclude>
 </div>
+<div class="card card-add" ng-if="$ctrl.add" ng-click="$ctrl.add()">+</div>

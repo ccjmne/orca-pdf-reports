@@ -2,7 +2,10 @@
 
 module.exports = {
   restrict: 'E',
-  template: require('./card.html'),
+  template: require('./pdf-card.html'),
+  bindings: {
+    add: '&?'
+  },
   transclude: {
     title: '?cardTitle',
     body: '?cardBody',

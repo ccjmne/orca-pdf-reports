@@ -7,12 +7,12 @@ pdf-report {
   @import './footer';
   @import './table';
 
-  @import '../../card/card';
 
   .no-print,
   [no-print] {
     display: none !important; // scss-lint:disable ImportantRule
   }
+  @import '../../pdf-card/pdf-card';
 
   .pdf-root {
     @include background-cover('../../../assets/pdf-background.svg');

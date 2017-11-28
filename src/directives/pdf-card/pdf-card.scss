@@ -1,24 +1,44 @@
 $card-background: white;
 $card-radius: 5px;
 
-card {
+pdf-card {
   display: block;
 
-  + card {
+  + pdf-card {
     margin-left: 20px;
   }
 }
 
 .card {
-  min-width: 500px;
   overflow: hidden;
   border: 1px solid $colour-primary;
   border-radius: $card-radius;
-  background: $card-background;
-  box-shadow: $shadow;
+
+  &:not(.card-add) {
+    min-width: 500px;
+    background: $card-background;
+    box-shadow: $shadow;
+  }
+
+  &.card-add {
+    @include center-content;
+
+    box-sizing: border-box;
+    padding: 20px 35px;
+    border-style: dashed;
+    background: none;
+    box-shadow: none;
+    color: $colour-primary;
+    font-size: 3em;
+    cursor: pointer;
+
+    &:hover {
+      background: lighten($shadow-colour, 50%);
+    }
+  }
 
   .card-title {
-    @include background-cover('../../../assets/pdf-footer.svg', bottom center);
+    @include background-cover('../../../assets/pdf-headers-background.svg', bottom center);
     @include center-content;
 
     color: $header-text-colour;
