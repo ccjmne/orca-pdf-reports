@@ -1,0 +1,11 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.no-print,
+[no-print] {
+  display: none !important; // scss-lint:disable ImportantRule
+}

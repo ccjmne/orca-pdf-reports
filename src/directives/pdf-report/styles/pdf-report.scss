@@ -7,11 +7,6 @@ pdf-report {
   @import './footer';
   @import './table';
 
-
-  .no-print,
-  [no-print] {
-    display: none !important; // scss-lint:disable ImportantRule
-  }
   @import '../../pdf-card/pdf-card';
 
   .pdf-root {

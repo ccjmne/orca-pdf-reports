@@ -5,8 +5,8 @@ require('style-loader!./styles/no-print.scss');
 const angular = require('angular');
 const _ = require('lodash');
 
-module.exports = angular.module('pdf-reports', [require('angular-file-saver'), require('./directives/directives')])
-  .directive('getPdf', ['$http', '$q', 'FileSaver', function ($http, $q, FileSaver) {
+module.exports = angular.module('pdf-reports', [require('./directives/directives')])
+  .directive('getPdf', ['$http', function ($http) {
     const apiSvc = {
       post: function (url, data, config) {
         return $http.post(encodeURI(url), JSON.stringify(data || {}), _.chain({ headers: { 'Content-Type': 'application/json' } }).clone().extend(config).value());
@@ -23,18 +23,16 @@ module.exports = angular.module('pdf-reports', [require('angular-file-saver'), r
       link: function (scope, elem, attrs) { // jshint ignore: line
         scope.getPDF = function () {
           apiSvc.post('//localhost:8080/api/reports', {
-              content: `<!DOCTYPE html>
-                  <html>
-                      <head>
-                          <meta charset="utf-8">
-                          <style>body, html { height: 100%; margin: 0; font-size: 1.1em; }</style>
-                      </head>
-                      <body>${scope.pdfContents}</body>
-                  </html>`,
+              content: scope.pdfContents,
               orientation: scope.orientation,
               size: scope.size
             }, { responseType: 'arraybuffer' })
-            .then((data) => FileSaver.saveAs(new Blob([data.data], { type: 'application/pdf;charset=utf-8' }), 'lolz.pdf', true));
+            .then((data) => {
+              const a = document.createElement('a');
+              a.href = URL.createObjectURL(new Blob([data.data], { type: 'application/pdf;charset=utf-8' }));
+              a.download = 'asdf.pdf';
+              a.click();
+            });
         };
       }
     };
