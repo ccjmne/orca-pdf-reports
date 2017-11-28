@@ -1,10 +1,21 @@
 pdf-report {
+  all: unset;
+
   .no-print,
   [no-print] {
     display: inline-block !important; // scss-lint:disable ImportantRule
   }
 
+  .print-only,
+  [print-only] {
+    display: none !important; // scss-lint:disable ImportantRule
+  }
+
   [contenteditable]::after {
     content: ' ✏️';
+  }
+
+  .pdf-body {
+    overflow: auto !important; // scss-lint:disable ImportantRule
   }
 }
