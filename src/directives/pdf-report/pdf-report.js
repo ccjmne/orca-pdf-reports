@@ -9,7 +9,8 @@ module.exports = {
     bookmark: '?pdfBookmark',
     footer: '?pdfFooter'
   },
-  controller: ['$transclude', '$element', '$attrs', '$parse', function ($transclude, $element, $attrs, $parse) {
+  controller: ['$transclude', '$element', '$attrs', '$parse', 'pdfReport', function ($transclude, $element, $attrs, $parse, pdfReport) {
+    this.userStyle = pdfReport.userStyle;
     this.hasBookmark = $transclude.isSlotFilled('bookmark');
     $element[0].style.all = 'unset';
 
