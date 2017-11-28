@@ -10,6 +10,7 @@
 
   pdf-body {
     display: flex;
+    position: relative;
     flex-flow: row nowrap; // wrap unsupported in wkhtmltopdf@~0.13
     align-items: center;
     justify-content: center;
