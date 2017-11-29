@@ -10,6 +10,7 @@ pdf-card {
 }
 
 .card {
+  position: relative;
   overflow: hidden;
   border: 1px solid $colour-primary;
   border-radius: $card-radius;
@@ -18,6 +19,32 @@ pdf-card {
     min-width: 500px;
     background: $card-background;
     box-shadow: $shadow;
+
+    .card-hover {
+      @include center-content;
+
+      position: absolute;
+      top: 0;
+      right: -60px;
+      bottom: 0;
+      transition: all .2s;
+      border-left: 1px solid $shadow-colour;
+      opacity: 0;
+      background-color: opacify($shadow-colour, .3);
+
+      .card-close::before {
+        content: '\00d7';
+        padding: 20px;
+        color: $header-text-colour;
+        font-size: 3em;
+        cursor: pointer;
+      }
+    }
+
+    &:hover .card-hover {
+      right: 0;
+      opacity: 1;
+    }
   }
 
   &.card-add {

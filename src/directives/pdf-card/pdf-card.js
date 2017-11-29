@@ -4,7 +4,8 @@ module.exports = {
   restrict: 'E',
   template: require('./pdf-card.html'),
   bindings: {
-    add: '&?'
+    add: '&?',
+    close: '&?'
   },
   transclude: {
     title: '?cardTitle',
