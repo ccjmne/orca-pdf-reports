@@ -28,16 +28,16 @@ pdf-card {
       right: -60px;
       bottom: 0;
       transition: all .2s;
-      border-left: 1px solid $shadow-colour;
+      border-left: 1px solid $colour-primary;
       opacity: 0;
       background-color: opacify($shadow-colour, .3);
+      cursor: pointer;
 
       .card-close::before {
         content: '\00d7';
         padding: 20px;
         color: $header-text-colour;
         font-size: 3em;
-        cursor: pointer;
       }
     }
 
