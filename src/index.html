@@ -28,39 +28,43 @@
                 <pdf-card>
                     <card-title>Sauveteurs Secouristes du Travail</card-title>
                     <card-body>This one has a body and two tables.</card-body>
-                    <table ng-repeat="a in [1, 2]">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Expiry date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="empl in [{name: 'eric', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francois', until: '1994-11-29'}]">
-                                <td>{{empl.name}}</td>
-                                <td class="text-right text-primary">{{empl.until}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <card-table ng-repeat="a in [1, 2]">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Expiry date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="empl in [{name: 'eric', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francois', until: '1994-11-29'}]">
+                                    <td>{{empl.name}}</td>
+                                    <td class="text-primary">{{empl.until}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </card-table>
                 </pdf-card>
             </pdf-body>
             <pdf-body>
                 <pdf-card>
                     <card-title>Agents d'Évacuation</card-title>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Expiry date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="empl in [{name: 'eric', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francois', until: '1994-11-29'}]">
-                                <td>{{empl.name}}</td>
-                                <td class="text-right text-primary">{{empl.until}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <card-table>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Expiry date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="empl in [{name: 'eric', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francois', until: '1994-11-29'}]">
+                                    <td>{{empl.name}}</td>
+                                    <td class="text-primary">{{empl.until}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </card-table>
                 </pdf-card>
                 <pdf-card ng-repeat="card in cards" close="cards.splice(cards.indexOf(card), 1)">
                     <card-title>Card #{{card}}</card-title>

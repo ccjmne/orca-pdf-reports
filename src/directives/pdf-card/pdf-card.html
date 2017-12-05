@@ -3,7 +3,7 @@
         <h2 ng-transclude="title"></h2>
     </div>
     <ng-transclude class="card-body" ng-transclude-slot="body" ng-if="$ctrl.hasBody" contenteditable></ng-transclude>
-    <ng-transclude class="card-tables" ng-transclude-slot="table"></ng-transclude>
+    <ng-transclude class="card-tables" ng-transclude-slot="tables"></ng-transclude>
     <div class="card-hover" ng-if="$ctrl.close" ng-click="$ctrl.close()">
         <div class="card-close"></div>
     </div>

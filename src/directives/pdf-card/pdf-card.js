@@ -10,7 +10,7 @@ module.exports = {
   transclude: {
     title: '?cardTitle',
     body: '?cardBody',
-    table: '?table'
+    tables: '?cardTable'
   },
   controller: ['$transclude', function ($transclude) {
     this.hasTitle = $transclude.isSlotFilled('title');

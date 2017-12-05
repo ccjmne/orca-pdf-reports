@@ -86,20 +86,15 @@ pdf-card {
   }
 
   .card-tables {
-    display: block;
+    display: flex;
     width: 100%;
 
-    table + table {
-      border-left: 1px solid $shadow-colour;
-    }
+    card-table {
+      display: block;
+      flex-grow: 1;
 
-    @for $i from 1 through 4 {
-      table:first-child:nth-last-child(#{$i}) {
-        &,
-        & ~ table {
-          width: 100% / $i;
-          float: left;
-        }
+      &:not(:last-of-type) table {
+        border-right: 1px solid $shadow-colour;
       }
     }
   }
