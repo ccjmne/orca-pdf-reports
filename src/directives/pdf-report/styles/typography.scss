@@ -16,12 +16,6 @@
     font-size: 24px;
   }
 
-  @each $position in left, right, center {
-    .text-#{$position} {
-      text-align: $position;
-    }
-  }
-
   $text-colours: primary $colour-primary, secondary $colour-secondary;
   @each $name, $colour in $text-colours {
     .text-#{$name} {
