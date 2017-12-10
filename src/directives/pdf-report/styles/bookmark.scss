@@ -31,13 +31,8 @@
   padding: 0 40px;
 
   .bookmark-content {
+    margin: 0;
     text-transform: uppercase;
-
-    > h1,
-    > h2 {
-      display: inline-block;
-      margin: 0;
-    }
   }
 
   .bookmark-background {
