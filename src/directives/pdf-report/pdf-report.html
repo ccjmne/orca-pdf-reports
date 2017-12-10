@@ -3,12 +3,10 @@
 <div class="pdf-root">
     <div class="pdf-header">
         <ng-transclude class="pdf-logo" ng-transclude-slot="logo"></ng-transclude>
-        <h1 class="title" ng-transclude="title" contenteditable></h1>
+        <h1 class="title" ng-transclude="title"></h1>
         <div class="bookmark" ng-show="$ctrl.hasBookmark">
             <div class="bookmark-background"></div>
-            <div class="bookmark-content">
-                <h2 ng-transclude="bookmark" contenteditable></h2>
-            </div>
+            <h2 class="bookmark-content" ng-transclude="bookmark"></h2>
         </div>
     </div>
     <div class="pdf-body">
