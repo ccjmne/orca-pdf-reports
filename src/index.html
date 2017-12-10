@@ -14,9 +14,9 @@
     </head>
 
     <body ng-app="pdf-reports">
-        <pdf-report pdf-contents="contents">
-            <pdf-bookmark>Infos sécurité</pdf-bookmark>
-            <pdf-title>Site de Pontault-Combault</pdf-title>
+        <pdf-report pdf-contents="contents" ng-init="site = { name: 'Pontault-Combault' }; config = {}">
+            <pdf-title><contenteditable-x model="config.title" scope="site">{{name}}</contenteditable-x></pdf-title>
+            <pdf-bookmark><contenteditable-x model="config.bookmark">Infos sécurité</contenteditable-x></pdf-bookmark>
             <pdf-body no-print>
                 <p>All the elements marked with a ✏️ can be edited.</p>
             </pdf-body>
