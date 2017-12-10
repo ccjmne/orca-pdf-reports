@@ -11,6 +11,7 @@ pdf-report {
     display: none !important; // scss-lint:disable ImportantRule
   }
 
+  [content-editable]::after,
   [contenteditable]::after {
     content: ' ✏️';
   }
