@@ -2,6 +2,7 @@ pdf-report {
   @import './colours';
   @import './mixins';
   @import './typography';
+  @import './pdf-background';
   @import './pdf-body';
   @import './header';
   @import './footer';
@@ -10,8 +11,6 @@ pdf-report {
   @import '../../pdf-card/pdf-card';
 
   .pdf-root {
-    @include background-cover('../../../assets/pdf-background.svg');
-
     display: flex;
     flex-direction: column;
     height: 100%;

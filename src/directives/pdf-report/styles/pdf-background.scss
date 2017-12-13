@@ -1,0 +1,29 @@
+.pdf-background {
+  @include background-cover('../../../assets/pdf-background.svg');
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .background-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $background-text-colour;
+    font-size: 8em;
+    pointer-events: none;
+
+    .row {
+      display: inline-block;
+      white-space: nowrap;
+
+      .col {
+        display: inline-block;
+        padding: 50px;
+        transform: rotate(-18deg);
+      }
+    }
+  }
+}

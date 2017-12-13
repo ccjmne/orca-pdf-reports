@@ -1,6 +1,13 @@
 <style>${require('./styles/pdf-report.scss')}</style>
 <style>{{$ctrl.userStyle}}</style>
 <div class="pdf-root">
+    <div class="pdf-background">
+        <div class="background-text" print-only>
+            <div class="row" ng-repeat="row in [1, 2, 3, 4, 5, 6, 7, 8]">
+                <div class="col" ng-repeat="col in [1, 2, 3, 4, 5, 6, 7, 8]">Sécurité</div>
+            </div>
+        </div>
+    </div>
     <div class="pdf-header">
         <ng-transclude class="pdf-logo" ng-transclude-slot="logo"></ng-transclude>
         <h1 class="title" ng-transclude="title"></h1>
@@ -10,7 +17,6 @@
         </div>
     </div>
     <div class="pdf-body">
-        <div class="background-text" print-only>Sécurité</div>
         <ng-transclude ng-transclude-slot="body"></ng-transclude>
     </div>
     <div class="pdf-footer">
