@@ -11,18 +11,23 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: $background-text-colour;
     font-size: 8em;
     pointer-events: none;
 
     .row {
-      display: inline-block;
+      display: flex;
       white-space: nowrap;
 
       .col {
         display: inline-block;
         padding: 50px;
         transform: rotate(-18deg);
+
+        @for $i from 1 through 4 {
+          &:nth-child(#{$i}) {
+            color: lighten($background-text-colour, $i * 5%);
+          }
+        }
       }
     }
   }
