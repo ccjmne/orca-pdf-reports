@@ -34,7 +34,7 @@ module.exports = angular.module('pdf-reports', [require('./directives/directives
   .directive('getPdf', ['$http', function ($http) {
     const apiSvc = {
       post: function (url, data, config) {
-        return $http.post(encodeURI(url), JSON.stringify(data || {}), _.chain({ headers: { 'Content-Type': 'application/json' } }).clone().extend(config).value());
+        return $http.post(encodeURI(url), JSON.stringify(data || {}), _.chain({ headers: { 'Content-Type': 'application/json', 'Authorization': `Basic ${btoa(`${'root'}:${'pwd'}`)}` } }).clone().extend(config).value());
       }
     };
 
