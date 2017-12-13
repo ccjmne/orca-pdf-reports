@@ -11,6 +11,7 @@
     <div class="pdf-header">
         <ng-transclude class="pdf-logo" ng-transclude-slot="logo"></ng-transclude>
         <h1 class="title" ng-transclude="title"></h1>
+        <h2 class="subtitle" ng-transclude="subtitle"></h2>
         <div class="bookmark" ng-show="$ctrl.hasBookmark">
             <div class="bookmark-background"></div>
             <h2 class="bookmark-content" ng-transclude="bookmark"></h2>

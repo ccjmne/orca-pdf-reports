@@ -5,6 +5,7 @@ module.exports = {
   transclude: {
     body: 'pdfBody',
     title: '?pdfTitle',
+    subtitle: '?pdfSubtitle',
     logo: '?pdfLogo',
     bookmark: '?pdfBookmark',
     footer: '?pdfFooter'
