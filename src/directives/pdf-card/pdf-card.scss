@@ -16,7 +16,6 @@ pdf-card {
   border-radius: $card-radius;
 
   &:not(.card-add) {
-    min-width: 500px;
     background: $card-background;
     box-shadow: $shadow;
 
@@ -72,7 +71,7 @@ pdf-card {
 
     > h2 {
       display: inline-block;
-      margin: 10px;
+      margin: .5em 2em;
     }
   }
 
