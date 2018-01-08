@@ -11,8 +11,10 @@
             <h2 class="bookmark-content" ng-transclude="bookmark"></h2>
         </div>
     </div>
-    <div class="pdf-body">
-        <ng-transclude ng-transclude-slot="body"></ng-transclude>
+    <div class="pdf-body-container">
+        <div class="pdf-body">
+          <ng-transclude ng-transclude-slot="body"></ng-transclude>
+        </div>
     </div>
     <div class="pdf-footer">
         <ng-transclude ng-transclude-slot="footer"></ng-transclude>

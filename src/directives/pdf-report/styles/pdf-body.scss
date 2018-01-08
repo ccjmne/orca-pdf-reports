@@ -1,12 +1,18 @@
+.pdf-body-container {
+  display: flex;
+  flex-grow: 1;
+  transform: scale(1); // new stacking context
+}
+
 .pdf-body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   align-items: center;
   justify-content: center;
+  min-width: max-content;
+  min-height: max-content;
   overflow: hidden;
-
-  transform: scale(1); // new stacking context
 
   pdf-body {
     display: flex;

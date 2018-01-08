@@ -16,7 +16,7 @@ pdf-report {
     content: ' ✏️';
   }
 
-  .pdf-body {
+  .pdf-body-container {
     overflow: auto !important; // scss-lint:disable ImportantRule
   }
 }
