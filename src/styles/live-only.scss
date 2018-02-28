@@ -1,4 +1,4 @@
-pdf-report {
+pdf-report:not([preview=true]) {
   all: unset;
 
   .live-only,

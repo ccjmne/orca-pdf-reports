@@ -18,14 +18,26 @@ module.exports = {
     // Expose the element's HTML contents through the scope variable defined via its 'pdf-contents' attribute
     if ($attrs.pdfContents) {
       const notify = html => $timeout($parse($attrs.pdfContents).assign.bind(null, $element.scope(), html), 0);
-      $element.scope().$watch(() => $element[0].outerHTML, html => notify(`<!DOCTYPE html>
+      $element.scope().$watch(() => $element[0].outerHTML, () => {
+        const node = $element[0].cloneNode(true);
+        node.setAttribute('preview', true);
+        notify(`<!DOCTYPE html>
         <html>
             <head>
                 <meta charset='utf-8'>
-                <style>${require('../../styles/print-only.scss')}</style>
+                <style>
+                    body,
+                    html {
+                      height: 100%;
+                      margin: 0;
+                      font-size: 1.1em;
+                    }
+                    ${require('../../styles/print-only.scss')}
+                </style>
             </head>
-            <body>${html}</body>
-        </html>`));
+            <body>${node.outerHTML}</body>
+        </html>`);
+      });
     }
   }]
 };

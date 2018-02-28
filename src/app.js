@@ -1,6 +1,7 @@
 'use strict';
 
-require('style-loader!./styles/live-only\.scss');
+require('style-loader!./styles/live-only.scss');
+require('style-loader!./styles/print-only.scss');
 
 const angular = require('angular');
 const _ = require('lodash');
