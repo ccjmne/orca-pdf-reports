@@ -5,7 +5,7 @@ html {
   font-size: 1.1em;
 }
 
-.no-print,
-[no-print] {
+.live-only,
+[live-only] {
   display: none !important; // scss-lint:disable ImportantRule
 }

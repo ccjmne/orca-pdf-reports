@@ -1,8 +1,8 @@
 pdf-report {
   all: unset;
 
-  .no-print,
-  [no-print] {
+  .live-only,
+  [live-only] {
     display: inline-block !important; // scss-lint:disable ImportantRule
   }
 

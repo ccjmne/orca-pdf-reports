@@ -18,7 +18,7 @@
             <pdf-title><contenteditable-x model="config.title" scope="editScope">{{name}}</contenteditable-x></pdf-title>
             <pdf-subtitle><contenteditable-x model="config.subtitle" scope="editScope">au {{date}}</contenteditable-x></pdf-subtitle>
             <pdf-bookmark><contenteditable-x model="config.bookmark">Infos sécurité</contenteditable-x></pdf-bookmark>
-            <pdf-body no-print>
+            <pdf-body live-only>
                 <p>All the elements marked with a ✏️ can be edited.</p>
             </pdf-body>
             <pdf-body>
@@ -111,10 +111,10 @@
                     <card-title>Card #{{card}}</card-title>
                     <card-body>Some random content...</card-body>
                 </pdf-card>
-                <pdf-card add="cards.push(cards.length + 1)" ng-init="cards = []" no-print></pdf-card>
+                <pdf-card add="cards.push(cards.length + 1)" ng-init="cards = []" live-only></pdf-card>
             </pdf-body>
             <pdf-footer>
-                <get-pdf pdf-contents="contents" no-print></get-pdf>
+                <get-pdf pdf-contents="contents" live-only></get-pdf>
             </pdf-footer>
         </pdf-report>
     </body>
