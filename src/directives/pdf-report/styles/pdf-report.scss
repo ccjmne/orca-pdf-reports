@@ -1,3 +1,8 @@
+$sizes: (
+  a4: (210mm, 297mm),
+  a3: (297mm, 420mm)
+);
+
 pdf-report {
   @import './colours';
   @import './mixins';
@@ -10,11 +15,25 @@ pdf-report {
 
   @import '../../pdf-card/pdf-card';
 
+  @each $name, $dimensions in $sizes {
+    &.#{$name}.portrait .pdf-root {
+      width: nth($dimensions, 1);
+      height: nth($dimensions, 2);
+    }
+
+    &.#{$name}.landscape .pdf-root {
+      width: nth($dimensions, 2);
+      height: nth($dimensions, 1);
+    }
+  }
+
   .pdf-root {
     display: flex;
+    position: relative;
     flex-direction: column;
     height: 100%;
     margin: 0;
+    overflow: hidden;
     color: $text-colour;
   }
 
