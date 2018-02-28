@@ -12,9 +12,7 @@
         </div>
     </div>
     <div class="pdf-body-container">
-        <div class="pdf-body">
-            <ng-transclude ng-transclude-slot="body"></ng-transclude>
-        </div>
+        <div class="pdf-body" ng-transclude="body"></div>
     </div>
     <div class="pdf-footer">
         <ng-transclude ng-transclude-slot="footer"></ng-transclude>

@@ -23,6 +23,46 @@
             </pdf-body>
             <pdf-body>
                 <pdf-card>
+                    <card-title>Tableau de Bord</card-title>
+                    <card-body>
+                        <table class="form-table">
+                            <tbody>
+                                <tr>
+                                    <td>Departement</td>
+                                    <td class="text-primary">Direction Regionale IDF</td>
+                                </tr>
+                                <tr>
+                                    <td>Nombre d'agents</td>
+                                    <td><strong>587</strong> (555 <span class="text-success">CDI</span> + 32 <span class="text-warning">CDD</span>)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </card-body>
+                    <card-table>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Aptitude</th>
+                                    <th>Cible à atteindre</th>
+                                    <th>Formés</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-{{cert.validityStatus}}" ng-repeat="cert in [
+                                  {name: 'Agent d\'évacuation', validityStatus: 'danger', valid: 21, validPercent: 3, target: 177, targetPercent: 30},
+                                  {name: 'Formateur SST', validityStatus: 'success', valid: 7, validPercent: 1, target: 0, targetPercent: 0},
+                                  {name: 'Sauveteurs Secouristes du Travail', validityStatus: 'warning', valid: 58, validPercent: 9, target: 59, targetPercent: 10}]">
+                                    <td>{{cert.name}}</td>
+                                    <td>{{cert.target}} ({{cert.targetPercent}}%)</td>
+                                    <td>{{cert.valid}} ({{cert.validPercent}}%)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </card-table>
+                </pdf-card>
+            </pdf-body>
+            <pdf-body>
+                <pdf-card>
                     <card-title>Équipement de Première Intervention</card-title>
                     <card-body>This one just has a simple body, no table.</card-body>
                 </pdf-card>
