@@ -16,7 +16,7 @@
     font-size: 24px;
   }
 
-  $text-colours: primary $colour-primary, secondary $colour-secondary;
+  $text-colours: primary $colour-primary, secondary $colour-secondary, success $colour-success, warning $colour-warning, danger $colour-secondary;
   @each $name, $colour in $text-colours {
     .text-#{$name} {
       color: $colour;
