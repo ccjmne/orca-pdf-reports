@@ -67,7 +67,7 @@
                         </table>
                     </card-table>
                 </pdf-card>
-                <pdf-card ng-repeat="card in cards" close="cards.splice(cards.indexOf(card), 1)">
+                <pdf-card ng-repeat="card in cards track by $index" close="cards.splice(cards.indexOf(card), 1)" edit="cards.splice(cards.indexOf(card), 1, card + 1)">
                     <card-title>Card #{{card}}</card-title>
                     <card-body>Some random content...</card-body>
                 </pdf-card>
