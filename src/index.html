@@ -10,11 +10,30 @@
             height: 100%;
             margin: 0;
         }
+
+        .controls {
+          position: fixed;
+          top: 0;
+          padding: 1em;
+          z-index: 9;
+          background-color: rgba(255, 255, 255, .5);
+          rgba
+        }
+
+        .controls, .controls * {
+          font-family: monospace;
+        }
         </style>
     </head>
 
-    <body ng-app="pdf-reports">
-        <pdf-report pdf-contents="contents" ng-init="editScope = { name: 'Pontault-Combault', date: '15 Mai 1990' }; config = {}">
+    <body ng-app="pdf-reports" ng-init="sizes = ['a4', 'a3']; orientations = ['portrait', 'landscape']; size = sizes[0]; orientation = orientations[0]">
+        <div class="controls">
+            <select ng-model="size" ng-options="size as size.toUpperCase() for size in sizes"></select>
+            <select ng-model="orientation" ng-options="orientation as orientation[0].toUpperCase() + orientation.substring(1) for orientation in orientations"></select>
+            <label for="preview">Preview:</label>
+            <input name="preview" type="checkbox" ng-model="preview">
+        </div>
+        <pdf-report ng-class="[size, orientation]" preview="{{preview}}" pdf-contents="contents" ng-init="editScope = { name: 'Pontault-Combault', date: '15 Mai 1990' }; config = {}">
             <pdf-title><contenteditable-x model="config.title" scope="editScope">{{name}}</contenteditable-x></pdf-title>
             <pdf-subtitle><contenteditable-x model="config.subtitle" scope="editScope">au {{date}}</contenteditable-x></pdf-subtitle>
             <pdf-bookmark><contenteditable-x model="config.bookmark">Infos sécurité</contenteditable-x></pdf-bookmark>
