@@ -1,6 +1,11 @@
 $card-background: white;
 $card-radius: 5px;
 
+$opposites: (
+  left: right,
+  right: left
+);
+
 pdf-card {
   display: block;
 
@@ -24,25 +29,44 @@ pdf-card {
 
       position: absolute;
       top: 0;
-      right: -60px;
       bottom: 0;
       transition: all .2s;
-      border-left: 1px solid $colour-primary;
       opacity: 0;
       background-color: opacify($shadow-colour, .3);
       cursor: pointer;
 
-      .card-close::before {
-        content: '\00d7';
+      @each $placement in left, right {
+        &.card-hover-#{$placement} {
+          border-#{map-get($opposites, $placement)}: 1px solid $colour-primary;
+          #{$placement}: -60px;
+        }
+      }
+
+      .card-close,
+      .card-edit {
         padding: 20px;
         color: $header-text-colour;
-        font-size: 3em;
+
+        &.card-close::before {
+          content: '\00d7';
+          font-size: 3em;
+        }
+
+        &.card-edit::before {
+          content: '✏️';
+          font-size: 1.8em;
+        }
       }
     }
 
     &:hover .card-hover {
-      right: 0;
       opacity: 1;
+
+      @each $placement in left, right {
+        &.card-hover-#{$placement} {
+          #{$placement}: 0;
+        }
+      }
     }
   }
 
