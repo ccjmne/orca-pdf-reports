@@ -16,12 +16,14 @@ module.exports = {
     $element[0].style.all = 'unset';
 
     // Expose the element's HTML contents through the scope variable defined via its 'pdf-contents' attribute
-    if ($attrs.pdfContents) {
-      const notify = html => $timeout($parse($attrs.pdfContents).assign.bind(null, $element.scope(), html), 0);
+    if ($attrs.pdfContents || $attrs.clone) {
+      const notifyHtml = $attrs.pdfContents && (html => $timeout($parse($attrs.pdfContents).assign.bind(null, $element.scope(), html), 0));
+      const notifyNode = $attrs.clone && (node => $timeout($parse($attrs.clone).assign.bind(null, $element.scope(), node), 0));
       $element.scope().$watch(() => $element[0].outerHTML, () => {
         const node = $element[0].cloneNode(true);
         node.setAttribute('preview', true);
-        notify(`<!DOCTYPE html>
+        if (notifyNode) { notifyNode(node); }
+        if (notifyHtml) { notifyHtml(`<!DOCTYPE html>
         <html>
             <head>
                 <meta charset='utf-8'>
@@ -36,7 +38,7 @@ module.exports = {
                 </style>
             </head>
             <body>${node.outerHTML}</body>
-        </html>`);
+        </html>`); }
       });
     }
   }]
