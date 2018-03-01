@@ -15,14 +15,14 @@ module.exports = {
         a4: [210, 297],
         a3: [297, 420]
       }[size] || [0, 0];
-      return orientation === 'Portrait' ? dimensions : dimensions.reverse();
+      return orientation === 'portrait' ? dimensions : dimensions.reverse();
     }
 
     this.style = () => {
       return {
         transform: `scale(${this.scale})`,
-        width: `${this.dimensions[1] * this.scale}mm`,
-        height: `${this.dimensions[0] * this.scale}mm`
+        width: `${this.dimensions[0] * this.scale}mm`,
+        height: `${this.dimensions[1] * this.scale}mm`
       };
     };
 
