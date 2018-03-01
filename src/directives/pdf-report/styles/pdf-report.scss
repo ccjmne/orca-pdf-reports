@@ -3,6 +3,8 @@ $sizes: (
   a3: (297mm, 420mm)
 );
 
+@import './pdf-preview';
+
 pdf-report {
   @import './colours';
   @import './mixins';

@@ -1,5 +1,5 @@
 <div class="card" ng-if="!$ctrl.add">
-    <div class="card-hover card-hover-left" ng-if="$ctrl.edit" ng-click="$ctrl.edit()" live-only>
+    <div class="card-hover card-hover-left" ng-if="$ctrl.edit" ng-click="$ctrl.edit()">
         <div class="card-edit"></div>
     </div>
     <div class="card-title" ng-if="$ctrl.hasTitle">
@@ -7,8 +7,8 @@
     </div>
     <ng-transclude class="card-body" ng-transclude-slot="body" ng-if="$ctrl.hasBody"></ng-transclude>
     <ng-transclude class="card-tables" ng-transclude-slot="tables"></ng-transclude>
-    <div class="card-hover card-hover-right" ng-if="$ctrl.close" ng-click="$ctrl.close()" live-only>
+    <div class="card-hover card-hover-right" ng-if="$ctrl.close" ng-click="$ctrl.close()">
         <div class="card-close"></div>
     </div>
 </div>
-<div class="card card-add" ng-if="$ctrl.add" ng-click="$ctrl.add()" live-only>+</div>
+<div class="card card-add" ng-if="$ctrl.add" ng-click="$ctrl.add()">+</div>

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  template: `<div style="transform-origin: top left;" ng-style="$ctrl.style()"></div>`,
+  template: `<div class="preview-container" ng-style="$ctrl.style()"></div>`,
   bindings: {
     scale: '=',
     of: '='
