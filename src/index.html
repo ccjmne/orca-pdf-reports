@@ -11,9 +11,14 @@
             margin: 0;
         }
 
+        body {
+          display: flex;
+        }
+
         .controls {
           position: fixed;
           top: 0;
+          right: 0;
           padding: 1em;
           z-index: 9;
           background-color: rgba(255, 255, 255, .5);
@@ -33,7 +38,8 @@
             <label for="preview">Preview:</label>
             <input name="preview" type="checkbox" ng-model="preview">
         </div>
-        <pdf-report ng-class="[size, orientation]" preview="{{preview}}" pdf-contents="contents" ng-init="editScope = { name: 'Pontault-Combault', date: '15 Mai 1990' }; config = {}">
+        <pdf-preview of="clone" scale=".2"></pdf-preview>
+        <pdf-report ng-class="[size, orientation]" preview="{{preview}}" pdf-contents="contents" clone="clone" ng-init="editScope = { name: 'Pontault-Combault', date: '15 Mai 1990' }; config = {}">
             <pdf-title><contenteditable-x model="config.title" scope="editScope">{{name}}</contenteditable-x></pdf-title>
             <pdf-subtitle><contenteditable-x model="config.subtitle" scope="editScope">au {{date}}</contenteditable-x></pdf-subtitle>
             <pdf-bookmark><contenteditable-x model="config.bookmark">Infos sécurité</contenteditable-x></pdf-bookmark>

@@ -1,5 +1,8 @@
 pdf-report[preview=true] {
-  pointer-events: none;
+  .pdf-root {
+    pointer-events: none;
+    user-select: none;
+  }
 
   .live-only,
   [live-only] {
