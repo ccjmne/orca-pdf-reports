@@ -3,7 +3,7 @@
 module.exports = {
   template: require('!html-loader?interpolate!./pdf-report.html'),
   transclude: {
-    body: 'pdfBody',
+    body: '?pdfBody',
     title: '?pdfTitle',
     subtitle: '?pdfSubtitle',
     logo: '?pdfLogo',
