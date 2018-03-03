@@ -1,0 +1,40 @@
+<pdf-report format="[controls.size, controls.orientation]" hook="viewer.clones[$index] = $clone ; viewer.contents[$index] = $contents" preview="{{controls.preview}}" ng-init="editScope = { name: 'Pontault-Combault', date: '15 Mai 1990' }; config = {}">
+    <pdf-title><contenteditable-x model="config.title" scope="editScope">{{name}}</contenteditable-x></pdf-title>
+    <pdf-subtitle><contenteditable-x model="config.subtitle" scope="editScope">au {{date}}</contenteditable-x></pdf-subtitle>
+    <pdf-bookmark><contenteditable-x model="config.bookmark">Infos sécurité</contenteditable-x></pdf-bookmark>
+    <pdf-body>
+        <pdf-card>
+            <card-title>Équipement de Première Intervention</card-title>
+            <card-body>This one just has a simple body, no table.</card-body>
+        </pdf-card>
+        <pdf-card>
+            <card-title>Sauveteurs Secouristes du Travail</card-title>
+            <card-body>This one has a body and two tables.</card-body>
+            <card-table ng-repeat="a in [1, 2]">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Expiry date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="empl in [{name: 'eric', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francois', until: '1994-11-29'}]">
+                            <td>{{empl.name}}</td>
+                            <td class="text-primary">{{empl.until}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </card-table>
+        </pdf-card>
+    </pdf-body>
+    <pdf-body>
+        <pdf-card ng-repeat="card in cards track by $index" close="cards.splice(cards.indexOf(card), 1)" edit="cards.splice(cards.indexOf(card), 1, card + 1)">
+            <card-title>Card #{{card}}</card-title>
+            <card-body>Some random content...</card-body>
+        </pdf-card>
+        <pdf-card add="cards.push(cards.length + 1)" ng-init="cards = []" live-only></pdf-card>
+    </pdf-body>
+    <pdf-footer>
+    </pdf-footer>
+</pdf-report>

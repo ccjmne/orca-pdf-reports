@@ -40,16 +40,12 @@ module.exports = angular.module('pdf-reports', [require('./directives/directives
     };
 
     return {
-      template: `<form ng-submit="getPDF()">
-          <select ng-model="size" ng-options="size for size in ['A4', 'A3']" ng-init="size = 'A4'"></select>
-          <select ng-model="orientation" ng-options="orientation for orientation in ['Portrait', 'Landscape']" ng-init="orientation = 'Portrait'"></select>
-          <button type="submit">Get PDF</button>
-      </form>`,
-      scope: { pdfContents: '=' },
+      template: `<button ng-click="getPDF()">Get PDF</button>`,
+      scope: { pdfContents: '=', size: '=', orientation: '=' },
       link: function (scope, elem, attrs) { // jshint ignore: line
         scope.getPDF = function () {
           apiSvc.post('//localhost:8080/api/reports', {
-              content: scope.pdfContents,
+              pages: [scope.pdfContents],
               orientation: scope.orientation,
               size: scope.size
             }, { responseType: 'arraybuffer' })
