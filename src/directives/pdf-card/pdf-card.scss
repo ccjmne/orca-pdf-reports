@@ -30,10 +30,14 @@ pdf-card {
       position: absolute;
       top: 0;
       bottom: 0;
-      transition: all .2s;
+      transition: left .2s, right .2s, opacity .2s;
       opacity: 0;
       background-color: opacify($shadow-colour, .3);
       cursor: pointer;
+
+      &:hover {
+        background-color: opacify($shadow-colour, .4);
+      }
 
       @each $placement in left, right {
         &.card-hover-#{$placement} {
