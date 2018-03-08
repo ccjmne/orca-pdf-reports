@@ -39,6 +39,10 @@ pdf-card {
         background-color: opacify($shadow-colour, .4);
       }
 
+      &:active {
+        background-color: opacify($shadow-colour, .5);
+      }
+
       @each $placement in left, right {
         &.card-hover-#{$placement} {
           border-#{map-get($opposites, $placement)}: 1px solid $colour-primary;
@@ -88,6 +92,10 @@ pdf-card {
 
     &:hover {
       background: lighten($shadow-colour, 50%);
+    }
+
+    &:active {
+      background: lighten($shadow-colour, 10%);
     }
   }
 
