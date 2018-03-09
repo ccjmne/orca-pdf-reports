@@ -16,7 +16,7 @@ module.exports = angular.module('pdf-reports', [require('./directives/directives
       template: (elem, attrs) => `
       <span
           content-editable single-line="true" focus-select="false"
-          ng-model="${attrs.model ||`__contenteditablex_${Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)}`}"
+          ng-model="${attrs.model || `__contenteditablex_${Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)}`}"
           ng-transclude></span>`,
       link: function (scope, element, attrs) {
         scope.$watch(() => `${$parse(attrs.ngModel)(scope)}:${element[0] === document.activeElement}`, () => $timeout(() => {
@@ -27,6 +27,7 @@ module.exports = angular.module('pdf-reports', [require('./directives/directives
             // compile {{expr}} notation to <span ng-bind="expr"></span>
             element.html(element[0].innerHTML.replace(/\{\{([^}]+)\}\}/g, (match, model) => `<span ng-bind="${model.toLowerCase()}"></span>`));
             $compile(element[0].querySelectorAll('span'))((attrs.scope ? Object.assign(scope.$new(true), $parse(attrs.scope)(scope)) : scope));
+            scope.$emit('contenteditable-x.compiled');
           }
         }, 0));
       }
