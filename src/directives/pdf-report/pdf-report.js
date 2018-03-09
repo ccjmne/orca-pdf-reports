@@ -14,7 +14,8 @@ module.exports = {
     format: '=',
     pdfContents: '=',
     clone: '=',
-    hook: '&'
+    hook: '&',
+    hookTrigger: '='
   },
   controller: ['$transclude', '$element', '$attrs', '$parse', '$timeout', 'pdfReport', function ($transclude, $element, $attrs, $parse, $timeout, pdfReport) {
     this.userStyle = pdfReport.userStyle;
@@ -34,7 +35,11 @@ module.exports = {
         });
       }
 
-      $element.scope().$watch(() => $element[0].outerHTML, this.notifyHook);
+      $element.scope().$watch(() => $attrs.hookTrigger ? this.hookTrigger : $element[0].outerHTML, this.notifyHook, true);
+      $element.scope().$on('contenteditable-x.compiled', event => {
+        this.notifyHook();
+        event.stopPropagation();
+      });
     };
 
     this.notifyHook = () => {
