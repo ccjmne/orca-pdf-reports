@@ -69,6 +69,7 @@ module.exports = {
                             max-height: 100% !important;
                             max-width: 100% !important;
                             zoom: ${1 / 0.78125};
+                            font-size: .9em;
                           }
                           ${require('../../styles/print-only.scss')}
                       </style>
