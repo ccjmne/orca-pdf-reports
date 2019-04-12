@@ -45,17 +45,18 @@ module.exports = angular.module('pdf-reports', [require('./directives/directives
       scope: { pdfContents: '=', size: '=', orientation: '=' },
       link: function (scope, elem, attrs) { // jshint ignore: line
         scope.getPDF = function () {
-          apiSvc.post('//localhost:8080/api/reports', {
-              pages: [scope.pdfContents],
-              orientation: scope.orientation,
-              size: scope.size
-            }, { responseType: 'arraybuffer' })
-            .then((data) => {
-              const a = document.createElement('a');
-              a.href = URL.createObjectURL(new Blob([data.data], { type: 'application/pdf;charset=utf-8' }));
-              a.download = 'asdf.pdf';
-              a.click();
-            });
+          apiSvc.post('//localhost:3000/multiple', { pages: [scope.pdfContents] }, {
+            responseType: 'arraybuffer',
+            params: {
+              format: scope.size,
+              landscape: scope.orientation === 'landscape'
+            }
+          }).then((data) => {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(new Blob([data.data], { type: 'application/pdf;charset=utf-8' }));
+            a.download = 'asdf.pdf';
+            a.click();
+          });
         };
       }
     };

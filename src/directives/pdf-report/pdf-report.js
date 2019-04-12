@@ -60,17 +60,11 @@ module.exports = {
                             margin: 0;
                           }
 
-                          pdf-report {
-                            max-height: 100% !important;
-                            max-width: 100% !important;
+                          pdf-report, .pdf-root {
+                            width: 100% !important;
+                            height: 100% !important;
                           }
 
-                          pdf-report .pdf-root {
-                            max-height: 100% !important;
-                            max-width: 100% !important;
-                            zoom: ${1 / 0.78125};
-                            font-size: .9em;
-                          }
                           ${require('../../styles/print-only.scss')}
                       </style>
                   </head>
