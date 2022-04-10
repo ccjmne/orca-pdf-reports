@@ -1,4 +1,3 @@
-<style>${require('./styles/pdf-report.scss')}</style>
 <style>{{$ctrl.userStyle}}</style>
 <div class="pdf-root">
     <div class="pdf-background"></div>
@@ -8,7 +7,7 @@
         <h2 class="subtitle" ng-transclude="subtitle"></h2>
         <div class="bookmark" ng-show="$ctrl.hasBookmark">
             <div class="bookmark-background"></div>
-            <h2 class="bookmark-content" ng-transclude="bookmark"></h2>
+            <h3 class="bookmark-content" ng-transclude="bookmark"></h3>
         </div>
     </div>
     <div class="pdf-body-container">

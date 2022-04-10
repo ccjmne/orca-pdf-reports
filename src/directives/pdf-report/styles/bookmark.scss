@@ -21,7 +21,7 @@
 }
 
 .bookmark {
-  $height: 3.5em;
+  $height: 3em;
 
   display: flex;
   position: relative;
@@ -32,7 +32,6 @@
 
   .bookmark-content {
     margin: 0;
-    text-transform: uppercase;
   }
 
   .bookmark-background {

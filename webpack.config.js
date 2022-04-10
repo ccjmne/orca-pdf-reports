@@ -2,9 +2,9 @@
 
 const path = require('path');
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
+const svgToMiniDataURI = require('mini-svg-data-uri');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -19,55 +19,40 @@ const config = {
     libraryTarget: 'umd'
   },
   devServer: {
+    static: path.resolve(__dirname, 'src'),
     port: 8000,
-    contentBase: path.resolve(__dirname, 'src')
   },
   module: {
     rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      use: [{
-        loader: 'babel-loader',
-        options: { presets: ['env'] }
-      }]
     }, {
       test: /\.html$/,
       use: [{
         loader: 'html-loader',
-        options: { minimize: true }
+        options: { minimize: true, esModule: false }
       }]
     }, {
       test: /\.scss$/,
-      use: [{
-          loader: 'css-loader',
-          options: { minimize: true }
-        },
-        {
-          loader: 'postcss-loader'
-        },
-        {
-          loader: 'sass-loader',
-          options: { outputStyle: 'compressed' }
-        }
-      ]
+      use: [{loader: 'css-loader', options: { esModule: false }}, 'sass-loader']
     }, {
-      test: /\.(png|svg|jpe?g|gif|ico)$/,
-      use: [
-        { loader: 'url-loader' },
-        { loader: 'image-webpack-loader' }
-      ]
+      test: /\.svg$/,
+      loader: 'svgo-loader',
+      type: 'asset/inline',
+      generator: {
+        dataUrl: content => svgToMiniDataURI(String(content)),
+      },
     }]
   },
   plugins: [
-    new CleanWebpackPlugin('dist')
+    new CleanWebpackPlugin()
   ]
 };
 
 if (isProduction) {
-  config.plugins.push(new UglifyjsWebpackPlugin());
-  config.externals = ['angular', 'lodash'];
+  config.externals = ['angular'];
 } else {
-  config.devtool = 'cheap-module-eval-source-map';
+  config.devtool = 'source-map';
   config.plugins.push(new HtmlWebpackPlugin({
     template: 'index.html',
     chunks: ['app'],

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  template: require('!html-loader?interpolate!./pdf-report.html'),
+  template: `<style>${require('./styles/pdf-report.scss')}</style>${require('./pdf-report.html')}`,
   transclude: {
     body: '?pdfBody',
     title: '?pdfTitle',

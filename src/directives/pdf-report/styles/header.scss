@@ -43,7 +43,7 @@
 
   .bookmark {
     position: absolute;
-    bottom: 0;
+    bottom: -.5em;
     left: 0;
     transform: scale(1); // creates stacking context
   }
