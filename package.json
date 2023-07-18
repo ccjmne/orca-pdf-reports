@@ -4,8 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "set NODE_ENV=development&& webpack-dev-server",
-    "build": "set NODE_ENV=production&& webpack --progress"
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack --progress"
   },
   "keywords": [],
   "author": {
@@ -17,6 +17,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.4",
     "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
