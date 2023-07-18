@@ -1,0 +1,30 @@
+<pdf-report format="[controls.size, controls.orientation]" hook="viewer.clones[$index] = $clone ; viewer.contents[$index] = $contents" preview="{{controls.preview}}" ng-init="editScope = { name: 'Pontault-Combault', date: '15 Mai 1990' }; config = {}">
+    <pdf-title><contenteditable-x model="config.title" scope="editScope">{{name}}</contenteditable-x></pdf-title>
+    <pdf-subtitle><contenteditable-x model="config.subtitle" scope="editScope">au {{date}}</contenteditable-x></pdf-subtitle>
+    <pdf-bookmark><contenteditable-x model="config.bookmark">Infos sécurité</contenteditable-x></pdf-bookmark>
+    <pdf-body>
+        <pdf-card>
+            <card-title>Sauveteurs Secouristes du Travail</card-title>
+            <card-grid-table class="cols-2">
+                <!-- headers -->
+                <div ng-repeat-start="unused in [1, 2]" class="heading">Agent</div>
+                <div ng-repeat-end class="heading">À renouveler le</div>
+                <!-- content -->
+                <div ng-repeat-start="empl in [{name: 'eric', until: '2017-05-15'}, {name: 'francoisdasfkjhfadsdsf dfsa fd faf dsa  dfashjkdfhjkfadkhjdfsa', until: '2016-06-26'}, {name: 'francois', until: '1994-11-29'}, {name: 'eric', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francoisdasfkjhdfashjkdfhjkfadkhj dfsafd fdasa dfdfsa', until: '1994-11-29'}, {name: 'francoisdasfkjhdff dasf f dsdashjkdfhjkfadkhjdfsa', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francois', until: '1994-11-29'}, {name: 'francoisdasfkjhdfashjkdfhjkfadkhjdfsa', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francois', until: '1994-11-29'}, {name: 'eric', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'eric', until: '2017-05-15'}, {name: 'noelie', until: '2016-06-26'}, {name: 'francoisdasfkjhdfashjkdfhjk', until: '1994-11-29'}]">{{empl.name}}</div>
+                <div ng-repeat-end class="text-primary">{{empl.until}}</div>
+                <!-- fill up the rest of the table -->
+                <div ng-repeat-start="unused in [1]"></div>
+                <div ng-repeat-end></div>
+            </card-grid-table>
+        </pdf-card>
+    </pdf-body>
+    <pdf-body>
+        <pdf-card ng-repeat="card in cards track by $index" close="cards.splice(cards.indexOf(card), 1)" edit="cards.splice(cards.indexOf(card), 1, card + 1)">
+            <card-title>Card #{{card}}</card-title>
+            <card-body>Some random content...</card-body>
+        </pdf-card>
+        <pdf-card add="cards.push(cards.length + 1)" ng-init="cards = []" live-only></pdf-card>
+    </pdf-body>
+    <pdf-footer>
+    </pdf-footer>
+</pdf-report>

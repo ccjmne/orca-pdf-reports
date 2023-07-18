@@ -7,6 +7,7 @@
     </div>
     <ng-transclude class="card-body" ng-transclude-slot="body" ng-if="$ctrl.hasBody"></ng-transclude>
     <ng-transclude class="card-tables" ng-transclude-slot="tables"></ng-transclude>
+    <ng-transclude class="card-grid-table" ng-transclude-slot="gridTable"></ng-transclude>
     <div class="card-hover card-hover-right" ng-if="$ctrl.close" ng-click="$ctrl.close()">
         <div class="card-close"></div>
     </div>

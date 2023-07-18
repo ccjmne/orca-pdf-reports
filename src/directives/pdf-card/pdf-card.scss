@@ -128,8 +128,60 @@ pdf-card {
       display: block;
       flex-grow: 1;
 
-      &:not(:last-of-type) table {
-        border-right: 1px solid $shadow-colour;
+      &:not(:first-of-type) table {
+        border-left: 1px solid $shadow-colour;
+      }
+    }
+  }
+
+  .card-grid-table {
+    --row-height: 35px;
+    card-grid-table {
+      @for $cols from 1 through 4 {
+        &.cols-#{$cols} {
+          --cols: #{$cols};
+        }
+      }
+
+      display: grid;
+      grid-template-columns: repeat(var(--cols), 1fr auto);
+      grid-auto-rows: var(--row-height);
+      background: repeating-linear-gradient(transparent 0 var(--row-height), $odd-row-background var(--row-height) calc(var(--row-height) * 2));
+      align-items: stretch;
+
+      > div {
+        // these divs *require* the following 4 properties for the ellipsis to work
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        // vertically align content without using flex-box
+        line-height: var(--row-height);
+
+        &:nth-child(odd) {
+          padding-left: 20px;
+        }
+
+        &:nth-child(even) {
+          padding: 0 20px;
+          text-align: end;
+        }
+
+        &.heading {
+          font-weight: 800;
+        }
+      }
+
+      // let cols-2..4 have a border-left between each pair of divs on the same row
+      @for $cols from 2 through 4 {
+        &.cols-#{$cols} {
+          @for $c from 2 through $cols {
+            > div:nth-child(#{$cols * 2}n + #{$c * 2 - 1}) {
+              border-left: 1px solid $shadow-colour;
+            }
+          }
+        }
       }
     }
   }

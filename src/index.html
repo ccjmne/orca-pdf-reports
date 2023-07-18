@@ -42,7 +42,7 @@
     </head>
 
     <body ng-app="pdf-reports" ng-init="sizes = ['a4', 'a3']; orientations = ['portrait', 'landscape']">
-        <div class="viewer" ng-init="viewer = { clones: [], contents: [], selected: 0 }">
+        <div class="viewer" ng-init="viewer = { clones: [], contents: [], selected: 1 }">
             <div class="controls" ng-init="controls = { size: sizes[0], orientation: orientations[0] }">
                 <select ng-model="controls.size" ng-options="size as size.toUpperCase() for size in sizes"></select>
                 <select ng-model="controls.orientation" ng-options="orientation as orientation[0].toUpperCase() + orientation.substring(1) for orientation in orientations"></select>
@@ -52,10 +52,10 @@
             </div>
 
             <div class="minimap">
-                <pdf-preview of="viewer.clones[$index]" scale=".2" ng-click="viewer.selected = $index" ng-repeat="unused in [1, 2, 3]"></pdf-preview>
+                <pdf-preview of="viewer.clones[$index]" scale=".2" ng-click="viewer.selected = $index" ng-repeat="unused in [1, 2, 3, 4]"></pdf-preview>
             </div>
 
-            <ng-include src="'templates/tmpl' + ($index + 1) + '.html'" ng-show="viewer.selected === $index" ng-repeat="unused in [1, 2, 3]"></ng-include>
+            <ng-include src="'templates/tmpl' + id + '.html'" ng-show="viewer.selected === $index" ng-repeat="id in [1, 2, 3, 4]"></ng-include>
         </div>
     </body>
 

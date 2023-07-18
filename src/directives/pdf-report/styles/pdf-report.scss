@@ -21,11 +21,17 @@ pdf-report {
     &.#{$name}.portrait .pdf-root {
       width: nth($dimensions, 1);
       height: nth($dimensions, 2);
+      & pdf-body {
+        max-width: nth($dimensions, 1);
+      }
     }
 
     &.#{$name}.landscape .pdf-root {
       width: nth($dimensions, 2);
       height: nth($dimensions, 1);
+      & pdf-body {
+        max-width: nth($dimensions, 2);
+      }
     }
   }
 

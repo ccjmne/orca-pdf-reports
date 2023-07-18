@@ -48,7 +48,7 @@ module.exports = angular.module('pdf-reports', [require('./directives/directives
       scope: { pdfContents: '=', size: '=', orientation: '=' },
       link: function (scope, elem, attrs) { // jshint ignore: line
         scope.getPDF = function () {
-          apiSvc.post('//localhost:3000/multiple', { pages: [scope.pdfContents] }, {
+          apiSvc.post('//localhost:3000/multiple', [scope.pdfContents], {
             responseType: 'arraybuffer',
             params: {
               format: scope.size,

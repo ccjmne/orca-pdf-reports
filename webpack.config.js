@@ -21,6 +21,9 @@ const config = {
   devServer: {
     static: path.resolve(__dirname, 'src'),
     port: 8000,
+    client: {
+      overlay: false,
+    },
   },
   module: {
     rules: [{
